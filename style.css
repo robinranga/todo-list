@@ -9,10 +9,9 @@
 
 
 body{
-    background-image: url(background.jpg);
+    background-image: url(assets/background.jpg);
     background-size: cover;
     background-position: center -200px;
-    /* background-repeat: no-repeat; */
 }
 
 

@@ -32,6 +32,8 @@ setInterval(
 // Internal working Functionality
 
 
+
+
 // Initialisizing the elements of task
 
 let addTaskButton = document.querySelector('#plus')
@@ -44,7 +46,7 @@ let deleteTaskButtons = Array.from(document.querySelectorAll('.delete-button'))
 
 
 // Event on Add Button
-addTaskButton.addEventListener('click', addTask)
+addTaskButton.addEventListener('click', () => addTask(null))
 
 // Add task by enter button
 taskInput.addEventListener('keypress', (event) => {
@@ -54,10 +56,26 @@ taskInput.addEventListener('keypress', (event) => {
 })
 
 
+// Arrays to collect tasks
+let array = JSON.parse(localStorage.getItem('tasks')) || []
+let arrayAlt = JSON.parse(localStorage.getItem('tasksAlt')) || []
+
 // Add task Function
-function addTask(){
-    // Runs if input is not empty
-    if (taskInput.value != ""){
+function addTask(data){
+    // Runs if input is not empty or there is data
+    if (taskInput.value != "" || data){
+        let embedData;
+        // To load tasks from localStorage
+        if (taskInput.value === "" || data){
+            embedData = data ;
+            
+        }
+        // To add Task manually
+        else{
+            embedData = taskInput.value
+            array.push(embedData)
+            updateStorage()
+        }
         // creating new task element
         let newTask = document.createElement('div')
 
@@ -67,7 +85,7 @@ function addTask(){
         // Adding all the other element to task
         newTask.innerHTML = `<div class="task-cont">
                                             <div class="checkbox hover"></div>
-                                            <div class="task">${taskInput.value}</div>
+                                            <div class="task">${embedData}</div>
                                             <div class="nocut">Completed</div>                            
                                         </div>
                                         <div class="delete-button"><i class="fa-solid fa-trash"></i></div>`
@@ -82,37 +100,99 @@ function addTask(){
 
         // adding event on complete button
         newTask.querySelector('.checkbox').addEventListener('click', completeTask);
-    
-        
+
     }else{
         return
     }
 }
 
+// Function to update storage from arrays
+function updateStorage(){
+    localStorage.setItem("tasks", JSON.stringify(array))
+    localStorage.setItem("tasksAlt", JSON.stringify(arrayAlt))
+}
+
+
+// function to load the tasks from localStorage when page loads
+
+(function() {
+    // Getting arrays from storage
+    let tasks = JSON.parse(localStorage.getItem('tasks'))
+    let tasksAlt = JSON.parse(localStorage.getItem('tasksAlt'))
+
+    // For Array
+    if (array.length != 0){
+        tasks.forEach(task => {
+            addTask(task)
+    })}
+
+    // For AltArrray
+    if (arrayAlt.length != 0){
+        tasksAlt.forEach(task => {
+            addTask(task)
+            completeTask(null,task)
+    })}
+})();
 
 
 // Function to delete a task
 function deleteTask(event) {
     // getting the task to remove
     let taskToRemove = event.target.closest('.task-box'); // Find the closest parent div
+
     if (taskToRemove) {
-        // removing the task
+        // Getting inner text of task
+        let taskTxt = taskToRemove.querySelector('.task').innerText
+
+        // To delete from array
+        if (array.includes(taskTxt)){
+            array.splice(array.indexOf(taskTxt),1)
+            updateStorage()
+        }
+
+        // to delete from AltArray
+        if (arrayAlt.includes(taskTxt)){
+            arrayAlt.splice(arrayAlt.indexOf(taskTxt),1)
+            updateStorage()
+        }
+        
+        // Removing the task from HTML
         taskToRemove.remove();
     }
 }
 
 
 // function to complete a task
-function completeTask(event){
-    // getting the task to remove
-    let taskToComplete = event.target.closest('.task-box'); // Find the closest parent div
-    if (taskToComplete){
+function completeTask(event, data){
 
+    // getting the task to remove
+    let taskToComplete;
+
+    // To complete tasks from localStorage on reload
+    if (!event){        
+        document.querySelectorAll('.task').forEach(task => {
+            if (task.innerText === data){
+                taskToComplete = task.closest('.task-box');
+            }
+        })
+    }
+    // Completing task manually
+    else{
+        taskToComplete = event.target.closest('.task-box'); // Find the closest parent div
+    }
+    
+    if (taskToComplete){
+        
         // Intialisizing inner elements to change
+        
         let innerTxt = taskToComplete.querySelector('.task')
         let check = taskToComplete.querySelector('.checkbox')
         let complete = taskToComplete.querySelector('.nocut')
 
+        // Aduio Element
+        let aud = document.querySelector('#sound');
+        aud.muted = false;
+        
         // Updating some styling
         innerTxt.style.color = "rgba(255, 255, 255, 0.6)"
         check.innerHTML = '<i class="fa-solid fa-check"></i>'
@@ -123,6 +203,24 @@ function completeTask(event){
         check.style.border = 'green'
         innerTxt.style.textDecoration = "line-through"
         complete.style.display = "flex"
+
+        // Inner text of the task
+        let taskTxt = innerTxt.innerText
+
+
+        if (array.includes(taskTxt)){
+            // Removing from arry
+            array.splice(array.indexOf(taskTxt),1)
+            // Adding to AltArray
+            arrayAlt.push(taskTxt)
+            updateStorage()
+
+        }
+
+        // playing audio for check if it is added manually
+        if (event){
+            aud.play()
+        }
         
         // removing the event listener to prevent clicking again 
         check.removeEventListener('click', completeTask);
@@ -130,30 +228,17 @@ function completeTask(event){
 }
 
 
-
-
-
 // Adding visually apealing hover effects 
-
-
-
-// let addTaskButton = document.querySelector('#plus')
-
-// let taskInput = document.querySelector('input')
-
-// let taskContainer = document.querySelector('main')
-
-// let deleteTaskButtons = Array.from(document.querySelectorAll('.delete-button'))
 
 
 // Initializing some more elements
 
 let inputBox = taskInput.closest('#footer')
-
 let checkBoxes =  document.querySelectorAll(".checkbox")
 
 
 // Adding Focus effect on input box
+
 taskInput.addEventListener("focus", () => {
     inputBox.style.backgroundColor = "rgb(45, 45, 45, .9)";
 });
@@ -162,26 +247,16 @@ taskInput.addEventListener("blur", () => {
     inputBox.style.backgroundColor = "rgb(17, 16, 16, 0.9)";
 });
 
-
-// Hover Effect on check box
-
-
-checkBoxes.forEach(box => {
-    box.addEventListener('mouseover', () => {
-        if (!box.querySelector('i')) { // Prevent adding multiple icons
-            let icon = document.createElement('i');
-            icon.classList.add('fa-solid', 'fa-check'); // Font Awesome check icon
-            box.appendChild(icon);
-        }
-    });
-
-    box.addEventListener('mouseout', () => {
-        let icon = box.querySelector('i');
-        if (icon) {
-            icon.remove();
-        }
-    });
+taskInput.addEventListener("mouseover", () => {
+    if (document.activeElement !== taskInput) { 
+        inputBox.style.backgroundColor = "rgb(45, 45, 45, .9)";
+    }
 });
 
+taskInput.addEventListener("mouseout", () => {
+    if (document.activeElement !== taskInput) { 
+        inputBox.style.backgroundColor = "rgb(17, 16, 16, 0.9)";
+    }
+});
 
 
