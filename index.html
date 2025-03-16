@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TO DO List</title>
+    <title>To Do List</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="to-do-list.png" type="image/x-icon">
 </head>
 
 <body>
@@ -22,127 +23,20 @@
         <header>
             <div id="date-cont">
                 <div id="myday">My Day</div>
-                <div id="date">March 15, 2025</div>
+                <div id="date"></div>
             </div>
-            <div id="time-cont">
-                6:14 PM
-            </div>
+            <div id="time-cont"></div>
         </header>
 
-
-        <main>
-
-
-            <div class="task-box">
-                <div class="task-cont">
-                    <div class="checkbox"></div>
-                    <div class="task">This is a task for today</div>
-                </div>
-                <div class="delete-button"><i class="fa-solid fa-trash"></i></div>
-            </div>
-
-
-            <div class="task-box">
-                <div class="task-cont">
-                    <div class="checkbox"></div>
-                    <div class="task">This is a task for today</div>
-                </div>
-                <div class="delete-button"><i class="fa-solid fa-trash"></i></div>
-            </div>
-
-
-            <div class="task-box">
-                <div class="task-cont">
-                    <div class="checkbox"></div>
-                    <div class="task">This is a task for today</div>
-                </div>
-                <div class="delete-button"><i class="fa-solid fa-trash"></i></div>
-            </div>
-
-
-            <div class="task-box">
-                <div class="task-cont">
-                    <div class="checkbox"></div>
-                    <div class="task">This is a task for today</div>
-                </div>
-                <div class="delete-button"><i class="fa-solid fa-trash"></i></div>
-            </div>
-
-
-            <div class="task-box">
-                <div class="task-cont">
-                    <div class="checkbox"></div>
-                    <div class="task">This is a task for today</div>
-                </div>
-                <div class="delete-button"><i class="fa-solid fa-trash"></i></div>
-            </div>
-
-
-            <div class="task-box">
-                <div class="task-cont">
-                    <div class="checkbox"></div>
-                    <div class="task">This is a task for today</div>
-                </div>
-                <div class="delete-button"><i class="fa-solid fa-trash"></i></div>
-            </div>
-
-
-            <div class="task-box">
-                <div class="task-cont">
-                    <div class="checkbox"></div>
-                    <div class="task">This is a very very very very very very very very big task for today</div>
-                </div>
-                <div class="delete-button"><i class="fa-solid fa-trash"></i></div>
-            </div>
-
-
-            <div class="task-box">
-                <div class="task-cont">
-                    <div class="checkbox"></div>
-                    <div class="task">This is a task for today</div>
-                </div>
-                <div class="delete-button"><i class="fa-solid fa-trash"></i></div>
-            </div>
-
-
-            <div class="task-box">
-                <div class="task-cont">
-                    <div class="checkbox"></div>
-                    <div class="task">This is a task for today</div>
-                </div>
-                <div class="delete-button"><i class="fa-solid fa-trash"></i></div>
-            </div>
-
-
-            <div class="task-box">
-                <div class="task-cont">
-                    <div class="checkbox"></div>
-                    <div class="task">This is a task for today</div>
-                </div>
-                <div class="delete-button"><i class="fa-solid fa-trash"></i></div>
-            </div>
-
-
-            <div class="task-box">
-                <div class="task-cont">
-                    <div class="checkbox"></div>
-                    <div class="task">This is a task for today</div>
-                </div>
-                <div class="delete-button"><i class="fa-solid fa-trash"></i></div>
-            </div>
-
-
-        </main>
-
-
-
+        <main></main>
 
         <footer>
-
-            <div id="footer">
-                <input type="text" name="task" id="task-input" placeholder="Add a Task">
-                <i class="fa-solid fa-plus" id="plus"></i>
-            </div>
+            <label for="task-input">
+                <div id="footer" tabindex="0">
+                    <input type="text" name="task" id="task-input" placeholder="Add a Task" autocomplete="off">
+                    <i class="fa-solid fa-plus" id="plus"></i>
+                </div>
+            </label>
         </footer>
     </div>
 
