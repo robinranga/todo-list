@@ -1,13 +1,24 @@
-# This is a To Do List
+# To-Do List 📝
+A simple, fast, and responsive To-Do app using vanilla JS and localStorage.
 
-I made this website by using HTML, CSS and vanilla JavaScript.
-I added functionality of -
-Adding, Removing and Completing the tasks.
-Even the local storage to store the tasks so that you can see them even after reloading the page.
-The hover effect to make it more attractive.
-The live Time and Date functionality to show on the top of page.
+## Features
+- Add / Delete / Complete tasks
+- Save tasks using localStorage
+- Clean UI with responsive layout
 
-You will listen a sound when the task is completed.
-I used poppins font from Google Fonts.
-I also used some icons from fontAwesome.
- 
+## Demo
+👉 [Live Demo Here](https://robinranga.github.io/todo-list/)
+
+## Technologies
+- HTML
+- CSS
+- JavaScript (vanilla)
+- localStorage
+
+## Screenshots
+![image](https://github.com/user-attachments/assets/1b25ea20-0d72-4fe2-b475-7873dc744970)
+
+![image](https://github.com/user-attachments/assets/e14061b8-0dba-43d7-b255-7bb94798c4ab)
+
+## Author
+- Robin Ranga (@robinranga)
