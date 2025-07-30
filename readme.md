@@ -1,12 +1,50 @@
-# React + Vite
+# 📝 React ToDo List App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple, clean, and responsive ToDo list built with React. This app lets you keep track of your tasks with a smooth UI, real-time updates, and a few handy features that make managing your day a little easier.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ✅ **Add, complete, and delete todos** — Keep your task list clean and organized.
+- 💾 **LocalStorage integration** — Your todos stay saved even after refreshing or closing the browser.
+- ⏰ **Live date and time** — Real-time clock displayed at the top to keep you in sync.
+- 🔊 **Sound feedback** — Marking a task as complete plays a satisfying beep.
+- 🟢 **Visual confirmation** — Completed tasks are marked with a green check.
 
-## Expanding the ESLint configuration
+## 🚀 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- [React](https://reactjs.org/) — Functional components and state management
+- CSS — Basic styling
+- JavaScript — DOM manipulation, event handling, and date/time functions
+
+## 📦 How to Run It Locally
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/robinranga/todo-list.git
+   cd todo-list
+
+   ```
+   
+2. **Install dependencies**
+   
+   ```bash
+   npm install
+   
+3. **Start the development server**
+   
+   ```bash
+   npm run dev   
+
+
+---
+
+## 🖼️ Screenshot
+
+<img height="780" alt="image" src="https://github.com/user-attachments/assets/b7524873-71e6-4f97-a3b7-bf08c1df60a7" />
+
+---
+
+## 👤 Author
+
+**Robin**  
