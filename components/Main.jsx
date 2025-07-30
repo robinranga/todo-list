@@ -21,7 +21,7 @@ const Main = () => {
 
   return (
     <main>
-      <audio ref={audio} src="assets/sound.mp3" id="sound"></audio>
+      <audio ref={audio} src="/todo-list/sound.mp3" id="sound"></audio>
       {tasks.length !== 0 &&
         tasks.map((task, index) => {
           return (
